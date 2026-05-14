@@ -51,7 +51,6 @@ main{padding:32px 5vw}
 .articleBody p{margin:14px 0;color:#e5e7eb}
 .articleBody li{margin:8px 0 8px 22px;color:#d4d4d8}
 .articleBody strong{color:white}
-.articleBody p:has(+ p){}
 
 /* CMS */
 .login{min-height:100vh;display:grid;place-items:center;padding:24px}
