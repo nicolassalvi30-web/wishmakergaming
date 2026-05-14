@@ -231,7 +231,6 @@
     grid-template-columns: 1fr;
   }
 
-  .card,
   .cardBody {
     min-height: 390px;
   }
