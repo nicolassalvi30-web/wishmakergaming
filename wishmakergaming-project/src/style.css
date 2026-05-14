@@ -5,3 +5,243 @@
 
 @media(max-width:1100px){.reviewCinematicHero,.reviewMainLayout{grid-template-columns:1fr}.reviewSticky{position:static}.reviewQuickGrid{grid-template-columns:repeat(2,1fr)}.prosConsPanel{grid-template-columns:1fr}}
 @media(max-width:900px){.hero,.cmsGrid{grid-template-columns:1fr}.pillars,.grid{grid-template-columns:1fr}.hero h1{font-size:44px}.header{align-items:flex-start;gap:16px;flex-direction:column}.stats{flex-direction:column}.sectionTop{align-items:flex-start;flex-direction:column}.fields{grid-template-columns:1fr}.reviewCinematicHero{min-height:auto;padding:48px 20px;grid-template-columns:1fr}.reviewQuickGrid,.reviewMainLayout{padding-left:20px;padding-right:20px;grid-template-columns:1fr}.ultimateBody{padding:24px;font-size:17px}.scoreRing{width:150px;height:150px}.scoreRing span{font-size:48px}.reviewCinematicHero h1{font-size:40px}}
+/* AAA HOMEPAGE SHOWCASE SYSTEM */
+
+/* Make the latest reviews section feel more premium */
+.reviews {
+  margin-top: 42px;
+}
+
+.sectionTop {
+  margin-bottom: 22px;
+}
+
+.sectionTop h2 {
+  font-size: clamp(32px, 4vw, 54px);
+  letter-spacing: -1.5px;
+  margin: 0;
+}
+
+.sectionTop input {
+  max-width: 420px;
+  background: rgba(21,21,32,.9);
+  border: 1px solid #352b52;
+  box-shadow: 0 0 30px rgba(124,58,237,.08);
+}
+
+/* Upgrade review grid */
+.grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* AAA cinematic game card */
+.card {
+  position: relative;
+  min-height: 420px;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #2b2440;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(124,58,237,.22), transparent 28%),
+    linear-gradient(180deg, #151520, #090910);
+  box-shadow: 0 20px 70px rgba(0,0,0,.35);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: #8b5cf6;
+  box-shadow: 0 28px 90px rgba(124,58,237,.24);
+}
+
+/* Cover image becomes full-card art */
+.card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  opacity: .72;
+  transform: scale(1.02);
+  transition: transform .45s ease, opacity .35s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+  opacity: .9;
+}
+
+/* Gradient overlay for readability */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8,8,15,.12) 0%, rgba(8,8,15,.55) 42%, rgba(8,8,15,.98) 100%),
+    radial-gradient(circle at 70% 15%, rgba(124,58,237,.24), transparent 30%);
+  z-index: 1;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 18px 18px;
+  height: 2px;
+  background: linear-gradient(90deg, #7c3aed, #06b6d4, transparent);
+  border-radius: 999px;
+  z-index: 3;
+  opacity: .8;
+}
+
+/* Content anchors to bottom */
+.cardBody {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 26px;
+}
+
+.cardBody .tag {
+  align-self: flex-start;
+  margin-bottom: 14px;
+  background: rgba(124,58,237,.38);
+  backdrop-filter: blur(8px);
+  border-color: rgba(196,181,253,.8);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.card h3 {
+  font-size: 26px;
+  line-height: 1.08;
+  letter-spacing: -.6px;
+  margin: 0 0 12px;
+  text-shadow: 0 8px 30px rgba(0,0,0,.6);
+}
+
+.card p {
+  color: #e5e7eb;
+  line-height: 1.55;
+  margin: 0 0 20px;
+  max-width: 95%;
+}
+
+/* Glowing score badge */
+.cardBottom {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 0;
+}
+
+.cardBottom strong {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  min-width: 112px;
+  padding: 12px 16px;
+  border: 1px solid rgba(124,58,237,.9);
+  border-radius: 20px;
+  background: rgba(8,8,15,.72);
+  backdrop-filter: blur(10px);
+  font-size: 34px;
+  line-height: 1;
+  color: #fff;
+  box-shadow: 0 0 35px rgba(124,58,237,.25);
+}
+
+.cardBottom small {
+  color: #06b6d4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 900;
+  text-align: right;
+  max-width: 120px;
+}
+
+/* Featured card on homepage also gets stronger */
+.featured {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  border-color: #352b52;
+  background:
+    radial-gradient(circle at 75% 20%, rgba(124,58,237,.25), transparent 32%),
+    linear-gradient(180deg,#141421,#0b0b13);
+  box-shadow: 0 22px 80px rgba(0,0,0,.32);
+}
+
+.featured img {
+  height: 260px;
+  border-radius: 22px;
+  box-shadow: 0 16px 50px rgba(0,0,0,.36);
+}
+
+.featured h2 {
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.featured .score {
+  display: inline-flex;
+  align-items: baseline;
+  padding: 14px 18px;
+  border-radius: 22px;
+  border: 1px solid #7c3aed;
+  background: rgba(124,58,237,.16);
+  box-shadow: 0 0 38px rgba(124,58,237,.22);
+}
+
+/* Hero polish */
+.heroText {
+  box-shadow: 0 25px 90px rgba(0,0,0,.32);
+}
+
+.heroText h1 {
+  text-shadow: 0 18px 60px rgba(0,0,0,.4);
+}
+
+.primary {
+  box-shadow: 0 0 28px rgba(124,58,237,.25);
+}
+
+.primary:hover,
+.secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .cardBody {
+    min-height: 390px;
+  }
+
+  .card h3 {
+    font-size: 24px;
+  }
+
+  .cardBottom strong {
+    font-size: 28px;
+    min-width: 96px;
+  }
+}
