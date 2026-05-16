@@ -609,6 +609,10 @@ function AdminCMS() {
               <input value={form.title} onChange={e => updateField('title', e.target.value)} placeholder="Article title" />
               <input value={form.slug} onChange={e => updateField('slug', e.target.value)} placeholder="URL slug" />
               <input value={form.score} onChange={e => updateField('score', e.target.value)} placeholder="Score, e.g. 9.6" />
+              <input value={form.gameplay_score} onChange={e => updateField('gameplay_score', e.target.value)} placeholder="Gameplay Score"/>
+              <input value={form.replayability_score} onChange={e => updateField('replayability_score', e.target.value)} placeholder="Replayability Score"/>
+              <input value={form.presentation_score} onChange={e => updateField('presentation_score', e.target.value)} placeholder="Presentation Score"/>
+              <input value={form.value_score} onChange={e => updateField('value_score', e.target.value)} placeholder="Value Score"/>
               <input value={form.category} onChange={e => updateField('category', e.target.value)} placeholder="Category, e.g. RPG" />
               <input className="wide" value={form.cover_image_url} onChange={e => updateField('cover_image_url', e.target.value)} placeholder="Cover image URL" />
               <input className="wide" value={form.seo_description} onChange={e => updateField('seo_description', e.target.value)} placeholder="SEO description" />
