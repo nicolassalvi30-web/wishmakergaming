@@ -47,6 +47,8 @@ function scorePercent(score) {
 function App() {
   const path = window.location.pathname;
   if (path.startsWith('/admin')) return <AdminCMS />;
+  if (path.startsWith('/about')) return <AboutPage />;
+  if (path.startsWith('/review-policy')) return <ReviewPolicyPage />;
   if (path.startsWith('/reviews/')) return <ReviewPage slug={path.split('/reviews/')[1]} />;
   return <HomePage />;
 }
@@ -345,7 +347,67 @@ function ReviewPage({ slug }) {
     </>
   );
 }
+function AboutPage() {
+  return (
+    <>
+      <Header />
+      <main className="staticPage">
+        <span className="tag">About WishMakerGaming</span>
+        <h1>Built for Players. Honest Reviews. Better Gaming.</h1>
+        <p>
+          WishMakerGaming is a player-first gaming review site focused on honest opinions,
+          clear scoring, and helping gamers decide what is actually worth their time.
+        </p>
+        <p>
+          We focus on games we genuinely play, especially RPGs, action games, horror,
+          multiplayer titles, MMOs, and PC gaming experiences.
+        </p>
+        <p>
+          Our goal is simple: no fake hype, no empty scores, no corporate noise — just
+          useful reviews from a real gamer perspective.
+        </p>
+      </main>
+    </>
+  );
+}
 
+function ReviewPolicyPage() {
+  return (
+    <>
+      <Header />
+      <main className="staticPage">
+        <span className="tag">Review Policy</span>
+        <h1>How WishMakerGaming Scores Games</h1>
+        <p>
+          Every WishMakerGaming review is built around four core pillars:
+          Gameplay, Replayability, Graphics / Presentation, and Value.
+        </p>
+
+        <div className="policyGrid">
+          <div><strong>Gameplay</strong><p>Controls, combat, mechanics, pacing, challenge, and fun factor.</p></div>
+          <div><strong>Replayability</strong><p>Long-term value, endgame, builds, multiplayer, and reasons to return.</p></div>
+          <div><strong>Presentation</strong><p>Graphics, art direction, sound, animation, atmosphere, and polish.</p></div>
+          <div><strong>Value</strong><p>Price vs content, performance, quality, and respect for player time.</p></div>
+        </div>
+
+        <h2>Our Promise</h2>
+        <p>
+          We aim to review games honestly and only publish opinions based on real playtime.
+          If we have not played enough of a game, we treat it as a preview or first impression,
+          not a final scored review.
+        </p>
+
+        <h2>Score Meaning</h2>
+        <p>9.5–10: Legendary</p>
+        <p>9.0–9.4: Must Play</p>
+        <p>8.5–8.9: Excellent</p>
+        <p>8.0–8.4: Great</p>
+        <p>7.0–7.9: Good</p>
+        <p>Below 7: Only recommended for specific audiences.</p>
+      </main>
+    </>
+  );
+}
 function AdminCMS() {
   const [session, setSession] = useState(null);
   const [email, setEmail] = useState('');
