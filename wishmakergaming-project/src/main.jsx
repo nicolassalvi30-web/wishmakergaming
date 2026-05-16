@@ -370,33 +370,25 @@ function ReviewPage({ slug }) {
               <p>{post.seo_description}</p>
             </div>
 
-           <div className="finalScoreBox">
+          <div className="finalScoreBox">
   <h2>WishMakerGaming Final Score</h2>
 
-  <div className="scoreRow">
-    <span>Gameplay</span>
-    <strong>9.3</strong>
-  </div>
-
-  <div className="scoreRow">
-    <span>Replayability</span>
-    <strong>8.9</strong>
-  </div>
-
-  <div className="scoreRow">
-    <span>Graphics / Presentation</span>
-    <strong>9.8</strong>
-  </div>
-
-  <div className="scoreRow">
-    <span>Value</span>
-    <strong>9.2</strong>
-  </div>
+  {[
+    ['Gameplay', post.gameplay_score],
+    ['Replayability', post.replayability_score],
+    ['Graphics / Presentation', post.presentation_score],
+    ['Value', post.value_score],
+  ].map(([label, score]) => (
+    <div className="scoreRow" key={label}>
+      <span>{label}</span>
+      <strong>{score ?? '-'}</strong>
+    </div>
+  ))}
 
   <div className="finalVerdict">
     <span>Final Verdict</span>
-    <strong>9.3</strong>
-    <p>Must Play</p>
+    <strong>{post.score}</strong>
+    <p>{scoreLabel(post.score)}</p>
   </div>
 </div>
 
