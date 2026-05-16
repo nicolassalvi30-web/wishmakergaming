@@ -359,3 +359,44 @@ margin:0;
     grid-template-columns:1fr;
   }
 }
+.gameMetaGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:34px;
+}
+
+.gameMetaGrid div{
+  border:1px solid #2b2440;
+  background:rgba(255,255,255,.02);
+  border-radius:22px;
+  padding:18px;
+  backdrop-filter:blur(10px);
+}
+
+.gameMetaGrid small{
+  display:block;
+  color:#06b6d4;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-size:11px;
+  margin-bottom:10px;
+  font-weight:800;
+}
+
+.gameMetaGrid strong{
+  font-size:20px;
+  color:#fff;
+}
+
+@media(max-width:900px){
+  .gameMetaGrid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .gameMetaGrid{
+    grid-template-columns:1fr;
+  }
+}
