@@ -336,25 +336,20 @@ function ReviewPage({ slug }) {
               </div>
             )}
 
-            <div className="articleBody ultimateBody">
-              <div className="articleBody ultimateBody">
-
+  <div className="articleBody ultimateBody">
   <div className="gameMetaGrid">
     <div>
       <small>Platform</small>
       <strong>PC / Steam</strong>
     </div>
-
     <div>
       <small>Reviewer</small>
       <strong>WishMaker</strong>
     </div>
-
     <div>
       <small>Hours Played</small>
       <strong>80+ Hours</strong>
     </div>
-
     <div>
       <small>Status</small>
       <strong>Completed</strong>
