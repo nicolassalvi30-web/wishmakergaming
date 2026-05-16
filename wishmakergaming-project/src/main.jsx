@@ -149,59 +149,32 @@ function HomePage() {
     {[...posts]
       .sort((a,b) => b.score - a.score)
       .slice(0,3)
-      .map(post => (
-        <a key={post.id} href={`/reviews/${post.slug}`} className="card">
-          <img src={post.cover_image_url} alt={post.title} />
-          <div className="cardBody">
-            <span className="tag">{post.category}</span>
-            <h3>{post.title}</h3>
-            <p>{post.seo_description}</p>
+      .map(post => <ReviewCard key={post.id} post={post} />)}
+  </div>
 
-            <div className="cardBottom">
-              <strong>{post.score}/10</strong>
-              <small>
-                {post.score >= 9.5
-                  ? 'Legendary'
-                  : post.score >= 9
-                  ? 'Must Play'
-                  : 'Excellent'}
-              </small>
-            </div>
-          </div>
-        </a>
-      ))}
+  <div className="sectionTop" style={{marginTop:'70px'}}>
+    <h2>Editor's Picks</h2>
+  </div>
+
+  <div className="grid">
+    {[...posts]
+      .filter(post => post.score >= 9)
+      .slice(0,3)
+      .map(post => <ReviewCard key={post.id} post={post} />)}
   </div>
 
   <div className="sectionTop" style={{marginTop:'70px'}}>
     <h2>Latest Reviews</h2>
+
+    <input
+      value={q}
+      onChange={e => setQ(e.target.value)}
+      placeholder="Search reviews..."
+    />
   </div>
 
   <div className="grid">
-    {posts.map(post => (
-      <a key={post.id} href={`/reviews/${post.slug}`} className="card">
-        <img src={post.cover_image_url} alt={post.title} />
-
-        <div className="cardBody">
-          <span className="tag">{post.category}</span>
-
-          <h3>{post.title}</h3>
-
-          <p>{post.seo_description}</p>
-
-          <div className="cardBottom">
-            <strong>{post.score}/10</strong>
-
-            <small>
-              {post.score >= 9.5
-                ? 'Legendary'
-                : post.score >= 9
-                ? 'Must Play'
-                : 'Excellent'}
-            </small>
-          </div>
-        </div>
-      </a>
-    ))}
+    {filtered.map(post => <ReviewCard key={post.id} post={post} />)}
   </div>
 
 </section>
