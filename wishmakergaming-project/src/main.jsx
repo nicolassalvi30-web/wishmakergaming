@@ -77,7 +77,8 @@ function Header() {
 function HomePage() {
   const [posts, setPosts] = useState([]);
   const [q, setQ] = useState('');
-
+  const [activeCategory, setActiveCategory] = useState('All');
+  
   useEffect(() => {
     supabase
       .from('posts')
@@ -87,9 +88,19 @@ function HomePage() {
       .then(({ data }) => setPosts(data || []));
   }, []);
 
-  const filtered = posts.filter(p =>
-    [p.title, p.category, p.seo_description].join(' ').toLowerCase().includes(q.toLowerCase())
-  );
+  const categories = ['All', ...new Set(posts.map(p => p.category).filter(Boolean))];
+
+const filtered = posts.filter(p => {
+  const matchesSearch = [p.title, p.category, p.seo_description]
+    .join(' ')
+    .toLowerCase()
+    .includes(q.toLowerCase());
+
+  const matchesCategory =
+    activeCategory === 'All' || p.category === activeCategory;
+
+  return matchesSearch && matchesCategory;
+});
 
   const featured = posts[0];
 
