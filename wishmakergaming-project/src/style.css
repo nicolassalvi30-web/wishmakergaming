@@ -400,3 +400,33 @@ margin:0;
     grid-template-columns:1fr;
   }
 }
+.categoryFilters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:22px 0 28px;
+}
+
+.categoryFilters button{
+  border:1px solid #2b2440;
+  background:#11111c;
+  color:#d4d4d8;
+  border-radius:999px;
+  padding:10px 16px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.categoryFilters button:hover{
+  border-color:#7c3aed;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.categoryFilters button.active{
+  background:linear-gradient(135deg,#7c3aed,#06b6d4);
+  color:white;
+  border-color:transparent;
+  box-shadow:0 0 28px rgba(124,58,237,.3);
+}
