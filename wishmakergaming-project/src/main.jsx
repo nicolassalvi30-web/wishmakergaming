@@ -185,20 +185,31 @@ const filtered = posts.filter(p => {
       .map(post => <ReviewCard key={post.id} post={post} />)}
   </div>
 
-  <div className="sectionTop" style={{marginTop:'70px'}}>
-    <h2>Latest Reviews</h2>
+ <div className="sectionTop" style={{marginTop:'70px'}}>
+  <h2>Latest Reviews</h2>
 
-    <input
-      value={q}
-      onChange={e => setQ(e.target.value)}
-      placeholder="Search reviews..."
-    />
-  </div>
+  <input
+    value={q}
+    onChange={e => setQ(e.target.value)}
+    placeholder="Search reviews..."
+  />
+</div>
 
-  <div className="grid">
-    {filtered.map(post => <ReviewCard key={post.id} post={post} />)}
-  </div>
+<div className="categoryFilters">
+  {categories.map(category => (
+    <button
+      key={category}
+      onClick={() => setActiveCategory(category)}
+      className={activeCategory === category ? 'active' : ''}
+    >
+      {category}
+    </button>
+  ))}
+</div>
 
+<div className="grid">
+  {filtered.map(post => <ReviewCard key={post.id} post={post} />)}
+</div>
 </section>
       </main>
       <footer>© WishMakerGaming — Built for Players. Honest Reviews. Better Gaming.</footer>
