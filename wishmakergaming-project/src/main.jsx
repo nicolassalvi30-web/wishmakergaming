@@ -21,10 +21,10 @@ const emptyPost = {
   seo_description: '',
   cover_image_url: '',
   body: '',
-  gameplay_score:'',
-  replayability_score:'',
-  presentation_score:'',
-  value_score:'',
+  gameplay_score: '',
+  replayability_score: '',
+  presentation_score: '',
+  value_score: '',
   status: 'draft',
 };
 
