@@ -533,6 +533,11 @@ function AdminCMS() {
       status,
       slug: form.slug || slugify(form.title),
       score: form.score ? Number(form.score) : null,
+      gameplay_score: form.gameplay_score ? Number(form.gameplay_score) : null,
+      replayability_score: form.replayability_score ? Number(form.replayability_score) : null,
+      presentation_score: form.presentation_score ? Number(form.presentation_score) : null,
+      value_score: form.value_score ? Number(form.value_score) : null,
+      category: form.category,
       author_id: session.user.id,
       published_at: status === 'published' ? new Date().toISOString() : null,
       updated_at: new Date().toISOString()
