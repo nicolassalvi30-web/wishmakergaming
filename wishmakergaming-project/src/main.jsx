@@ -297,20 +297,35 @@ function ReviewPage({ slug }) {
               <p>{post.seo_description}</p>
             </div>
 
-            <div className="scoreBreakdown">
-              <h3>Score System</h3>
-              {[
-                ['Gameplay', 40, 95],
-                ['Replayability', 20, 86],
-                ['Presentation', 20, 92],
-                ['Value', 20, 90],
-              ].map(([label, weight, width]) => (
-                <div className="barRow" key={label}>
-                  <div><span>{label}</span><strong>{weight}%</strong></div>
-                  <div className="bar"><span style={{width: `${width}%`}} /></div>
-                </div>
-              ))}
-            </div>
+           <div className="finalScoreBox">
+  <h2>WishMakerGaming Final Score</h2>
+
+  <div className="scoreRow">
+    <span>Gameplay</span>
+    <strong>9.3</strong>
+  </div>
+
+  <div className="scoreRow">
+    <span>Replayability</span>
+    <strong>8.9</strong>
+  </div>
+
+  <div className="scoreRow">
+    <span>Graphics / Presentation</span>
+    <strong>9.8</strong>
+  </div>
+
+  <div className="scoreRow">
+    <span>Value</span>
+    <strong>9.2</strong>
+  </div>
+
+  <div className="finalVerdict">
+    <span>Final Verdict</span>
+    <strong>9.3</strong>
+    <p>Must Play</p>
+  </div>
+</div>
 
             <div className="mediaPrompt">
               <ImageIcon/>
