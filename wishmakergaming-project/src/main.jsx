@@ -64,10 +64,12 @@ function Header() {
         </div>
       </a>
       <nav>
-        <a href="/">Home</a>
-        <a href="/#reviews">Reviews</a>
-        <a href="/admin">Admin</a>
-      </nav>
+  <a href="/">Home</a>
+  <a href="/#reviews">Reviews</a>
+  <a href="/about">About</a>
+  <a href="/review-policy">Review Policy</a>
+  <a href="/admin">Admin</a>
+</nav>
     </header>
   );
 }
