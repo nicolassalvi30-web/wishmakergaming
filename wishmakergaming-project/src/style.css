@@ -309,3 +309,53 @@ font-size:28px;
 font-weight:900;
 margin:0;
 }
+.staticPage{
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 72px 5vw;
+}
+
+.staticPage h1{
+  font-size: clamp(42px,6vw,76px);
+  line-height: .95;
+  letter-spacing: -2px;
+  margin: 22px 0;
+}
+
+.staticPage h2{
+  font-size: 34px;
+  margin-top: 42px;
+  padding-top: 24px;
+  border-top: 1px solid #30294a;
+}
+
+.staticPage p{
+  font-size: 19px;
+  line-height: 1.8;
+  color: #d4d4d8;
+}
+
+.policyGrid{
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  gap:18px;
+  margin:32px 0;
+}
+
+.policyGrid div{
+  border:1px solid #2b2440;
+  border-radius:24px;
+  background:#11111c;
+  padding:22px;
+}
+
+.policyGrid strong{
+  color:#8b5cf6;
+  font-size:22px;
+}
+
+@media(max-width:760px){
+  .policyGrid{
+    grid-template-columns:1fr;
+  }
+}
