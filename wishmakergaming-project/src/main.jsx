@@ -337,6 +337,31 @@ function ReviewPage({ slug }) {
             )}
 
             <div className="articleBody ultimateBody">
+              <div className="articleBody ultimateBody">
+
+  <div className="gameMetaGrid">
+    <div>
+      <small>Platform</small>
+      <strong>PC / Steam</strong>
+    </div>
+
+    <div>
+      <small>Reviewer</small>
+      <strong>WishMaker</strong>
+    </div>
+
+    <div>
+      <small>Hours Played</small>
+      <strong>80+ Hours</strong>
+    </div>
+
+    <div>
+      <small>Status</small>
+      <strong>Completed</strong>
+    </div>
+  </div>
+
+  {post.body.split('\n').map((line,i) => {
               {post.body.split('\n').map((line, i) => {
                 const clean = line.trim();
                 if (!clean) return <br key={i}/>;
