@@ -155,7 +155,18 @@ const filtered = posts.filter(p => {
   <div className="sectionTop">
     <h2>Top Rated Games</h2>
   </div>
-
+  
+  <div className="categoryFilters">
+  {categories.map(category => (
+    <button
+      key={category}
+      onClick={() => setActiveCategory(category)}
+      className={activeCategory === category ? 'active' : ''}
+    >
+      {category}
+    </button>
+  ))}
+</div>
   <div className="grid">
     {[...posts]
       .sort((a,b) => b.score - a.score)
