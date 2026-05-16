@@ -140,14 +140,71 @@ function HomePage() {
         </section>
 
         <section id="reviews" className="reviews">
-          <div className="sectionTop">
-            <h2>Latest Reviews</h2>
-            <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search reviews..." />
+
+  <div className="sectionTop">
+    <h2>Top Rated Games</h2>
+  </div>
+
+  <div className="grid">
+    {[...posts]
+      .sort((a,b) => b.score - a.score)
+      .slice(0,3)
+      .map(post => (
+        <a key={post.id} href={`/reviews/${post.slug}`} className="card">
+          <img src={post.cover_image_url} alt={post.title} />
+          <div className="cardBody">
+            <span className="tag">{post.category}</span>
+            <h3>{post.title}</h3>
+            <p>{post.seo_description}</p>
+
+            <div className="cardBottom">
+              <strong>{post.score}/10</strong>
+              <small>
+                {post.score >= 9.5
+                  ? 'Legendary'
+                  : post.score >= 9
+                  ? 'Must Play'
+                  : 'Excellent'}
+              </small>
+            </div>
           </div>
-          <div className="grid">
-            {filtered.map(post => <ReviewCard key={post.id} post={post} />)}
+        </a>
+      ))}
+  </div>
+
+  <div className="sectionTop" style={{marginTop:'70px'}}>
+    <h2>Latest Reviews</h2>
+  </div>
+
+  <div className="grid">
+    {posts.map(post => (
+      <a key={post.id} href={`/reviews/${post.slug}`} className="card">
+        <img src={post.cover_image_url} alt={post.title} />
+
+        <div className="cardBody">
+          <span className="tag">{post.category}</span>
+
+          <h3>{post.title}</h3>
+
+          <p>{post.seo_description}</p>
+
+          <div className="cardBottom">
+            <strong>{post.score}/10</strong>
+
+            <small>
+              {post.score >= 9.5
+                ? 'Legendary'
+                : post.score >= 9
+                ? 'Must Play'
+                : 'Excellent'}
+            </small>
           </div>
-        </section>
+        </div>
+      </a>
+    ))}
+  </div>
+
+</section>
       </main>
       <footer>© WishMakerGaming — Built for Players. Honest Reviews. Better Gaming.</footer>
     </div>
