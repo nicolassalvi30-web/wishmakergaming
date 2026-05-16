@@ -356,7 +356,7 @@ function ReviewPage({ slug }) {
     </div>
   </div>
 
-              {post.body.split('\n').map((line, i) => {
+  {post.body.split('\n').map((line, i) => {
                 const clean = line.trim();
                 if (!clean) return <br key={i}/>;
                 if (clean.startsWith('# ')) return <h2 key={i}>{clean.replace('# ', '')}</h2>;
