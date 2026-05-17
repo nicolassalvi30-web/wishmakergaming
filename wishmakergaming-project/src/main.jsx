@@ -266,28 +266,35 @@ function getSectionItems(body, heading) {
 
 function ReviewPage({ slug }) {
   const [post, setPost] = useState(null);
-  const [related, setRelated] = useState([]);
+  const [loadingPost, setLoadingPost] = useState(true);
 
-  useEffect(() => {
-    supabase
-      .from('posts')
-      .select('*')
-      .eq('slug', slug)
-      .eq('status', 'published')
-      .single()
-      .then(({ data }) => {
-        setPost(data);
-        if (data) {
-          supabase
-            .from('posts')
-            .select('*')
-            .eq('status', 'published')
-            .neq('slug', slug)
-            .limit(3)
-            .then(({ data }) => setRelated(data || []));
-        }
-      });
-  }, [slug]);
+ useEffect(() => {
+  setLoadingPost(true);
+
+  const cleanSlug = decodeURIComponent(slug || '').trim();
+
+  supabase
+    .from('posts')
+    .select('*')
+    .eq('slug', cleanSlug)
+    .eq('status', 'published')
+    .maybeSingle()
+    .then(({ data, error }) => {
+      if (error) console.error('Review load error:', error);
+      setPost(data || null);
+      setLoadingPost(false);
+
+      if (data) {
+        supabase
+          .from('posts')
+          .select('*')
+          .eq('status', 'published')
+          .neq('slug', cleanSlug)
+          .limit(3)
+          .then(({ data }) => setRelated(data || []));
+      }
+    });
+}, [slug]);
 
   if (!post) return <><Header /><main className="article"><h1>Review not found</h1></main></>;
 
