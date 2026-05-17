@@ -425,17 +425,17 @@ function ReviewPage({ slug }) {
 
             <div className="articleBody ultimateBody">
               {articleBody.split('\n').map((line, i) => {
-                const clean = line.trim();
+  const text = line.trim();
 
-                if (!clean) return <br key={i} />;
-                if (clean.toLowerCase().includes('score:')) return <p key={i} className="scoreLine">{line}</p>;
-                if (clean.startsWith('- ')) return <p key={i}>• {clean.replace('- ', '')}</p>;
-                if (/^(Final Verdict|What Makes .* Special|Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Who Should Play It|Final Score)$/i.test(clean)) return <h2 key={i}>{clean}</h2>;
-                if (clean.startsWith('# ')) return <h2 key={i}>{clean.replace('# ', '')}</h2>;
-                if (clean.startsWith('## ')) return <h3 key={i}>{clean.replace('## ', '')}</h3>;
+  if (!text) return <br key={i} />;
+  if (text.toLowerCase().includes('score:')) return <p key={i} className="scoreLine">{line}</p>;
+  if (text.startsWith('- ')) return <p key={i}>• {text.replace('- ', '')}</p>;
+  if (/^(Final Verdict|What Makes .* Special|Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Who Should Play It|Final Score)$/i.test(text)) return <h2 key={i}>{text}</h2>;
+  if (text.startsWith('# ')) return <h2 key={i}>{text.replace('# ', '')}</h2>;
+  if (text.startsWith('## ')) return <h3 key={i}>{text.replace('## ', '')}</h3>;
 
-                return <p key={i}>{line}</p>;
-              })}
+  return <p key={i}>{line}</p>;
+})}
             </div>
           </article>
 
