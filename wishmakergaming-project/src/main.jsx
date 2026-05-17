@@ -267,7 +267,8 @@ function getSectionItems(body, heading) {
 function ReviewPage({ slug }) {
   const [post, setPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(true);
-
+  const [related, setRelated] = useState([]);
+  
  useEffect(() => {
   setLoadingPost(true);
 
@@ -320,9 +321,9 @@ if (!post) {
   const pros = getSectionItems(post.body, 'Pros');
   const cons = getSectionItems(post.body, 'Cons');
   const percent = scorePercent(post.score);
-  const articleBody = post.body
-  .replace(/\n?Pros\n[\s\S]*?(?=\nCons\n)/i, '\n')
-  .replace(/\n?Cons\n[\s\S]*?(?=\nWho Should Play|Final Score|Final Verdict|$)/i, '\n');
+ const articleBody = post.body
+  .replace(/\nPros\n[\s\S]*?(?=\nCons\n)/i, '\n')
+  .replace(/\nCons\n[\s\S]*?(?=\n(Who Should Play|Final Score|Final Verdict)|$)/i, '\n');
   return (
     <>
       <Header />
