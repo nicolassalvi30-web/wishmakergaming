@@ -292,7 +292,9 @@ function ReviewPage({ slug }) {
   const pros = getSectionItems(post.body, 'Pros');
   const cons = getSectionItems(post.body, 'Cons');
   const percent = scorePercent(post.score);
-
+  const articleBody = post.body
+  .replace(/\n?Pros\n[\s\S]*?(?=\nCons\n)/i, '\n')
+  .replace(/\n?Cons\n[\s\S]*?(?=\nWho Should Play|Final Score|Final Verdict|$)/i, '\n');
   return (
     <>
       <Header />
