@@ -443,7 +443,12 @@ margin:0;
   border:1px solid #2b2440;
   border-radius:22px;
   background:linear-gradient(180deg,#11111c,#0b0b13);
-  padding:20px;
+  padding:28px;
+  min-height:120px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .quickCard small{
