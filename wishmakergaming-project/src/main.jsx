@@ -26,6 +26,14 @@ const emptyPost = {
   replayability_score: '',
   presentation_score: '',
   value_score: '',
+  developer: '',
+  publisher: '',
+  release_date: '',
+  platforms: '',
+  hours_played: '',
+  completion_status: '',
+  multiplayer: '',
+  steam_deck: '',
   status: 'draft',
 };
 
