@@ -268,7 +268,6 @@ function getSectionItems(body, heading) {
 function ReviewPage({ slug }) {
   const [post, setPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(true);
-  const [related, setRelated] = useState([]);
 
   useEffect(() => {
     setLoadingPost(true);
@@ -286,16 +285,6 @@ function ReviewPage({ slug }) {
 
         setPost(data || null);
         setLoadingPost(false);
-
-        if (data) {
-          supabase
-            .from('posts')
-            .select('*')
-            .eq('status', 'published')
-            .neq('slug', cleanSlug)
-            .limit(3)
-            .then(({ data }) => setRelated(data || []));
-        }
       });
   }, [slug]);
 
@@ -485,18 +474,6 @@ function ReviewPage({ slug }) {
               <h3>Make It Pop</h3>
               <p>Add trailer embeds and screenshot galleries later for a full multimedia review system.</p>
             </div>
-
-            {related.length > 0 && (
-              <div className="related">
-                <h3>Related Reviews</h3>
-                {related.map(r => (
-                  <a key={r.id} href={`/reviews/${r.slug}`}>
-                    {r.title}
-                    <small>{r.score}/10</small>
-                  </a>
-                ))}
-              </div>
-            )}
           </aside>
         </section>
       </main>
