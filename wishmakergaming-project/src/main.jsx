@@ -1,4 +1,4 @@
-// force cms score fields deploy
+  // force cms score fields deploy
 // force deploy
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -624,6 +624,14 @@ function AdminCMS() {
               <input value={form.category} onChange={e => updateField('category', e.target.value)} placeholder="Category, e.g. RPG" />
               <input className="wide" value={form.cover_image_url} onChange={e => updateField('cover_image_url', e.target.value)} placeholder="Cover image URL" />
               <input className="wide" value={form.seo_description} onChange={e => updateField('seo_description', e.target.value)} placeholder="SEO description" />
+              <input value={form.developer} onChange={e => updateField('developer', e.target.value)} placeholder="Developer" />
+              <input value={form.publisher} onChange={e => updateField('publisher', e.target.value)} placeholder="Publisher" />
+              <input value={form.release_date} onChange={e => updateField('release_date', e.target.value)} placeholder="Release Date" />
+              <input value={form.platforms} onChange={e => updateField('platforms', e.target.value)} placeholder="Platforms" />
+              <input value={form.hours_played} onChange={e => updateField('hours_played', e.target.value)} placeholder="Hours Played" />
+              <input value={form.completion_status} onChange={e => updateField('completion_status', e.target.value)} placeholder="Completion Status" />
+              <input value={form.multiplayer} onChange={e => updateField('multiplayer', e.target.value)} placeholder="Multiplayer" />
+              <input value={form.steam_deck} onChange={e => updateField('steam_deck', e.target.value)} placeholder="Steam Deck Support" />
             </div>
             <textarea value={form.body} onChange={e => updateField('body', e.target.value)} placeholder="Paste or write full review here..." />
             <div className="actions">
