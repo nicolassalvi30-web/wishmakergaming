@@ -255,7 +255,9 @@ function getSectionItems(body, heading) {
   for (let i = start + 1; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
-    if (/^(cons|pros|final verdict|who should play|compared|gameplay|replayability|graphics|value)/i.test(line) && items.length) break;
+    if (clean.toLowerCase().includes('score:')) return <p key={i} className="scoreLine">{line}</p>;
+    if (clean.startsWith('- ')) return <li key={i}>{clean.replace('- ', '')}</li>;
+    if (/^(Final Verdict|What Makes .* Special|Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Who Should Play It|Final Score)$/i.test(clean)) return <h2 key={i}>{clean}</h2>;
     if (!line.includes('Score:') && line.length < 110) items.push(line.replace(/^- /, ''));
     if (items.length >= 7) break;
   }
