@@ -539,6 +539,14 @@ function AdminCMS() {
       category: form.category,
       author_id: session.user.id,
       published_at: status === 'published' ? new Date().toISOString() : null,
+      developer: form.developer,
+      publisher: form.publisher,
+      release_date: form.release_date,
+      platforms: form.platforms,
+      hours_played: form.hours_played,
+      completion_status: form.completion_status,
+      multiplayer: form.multiplayer,
+      steam_deck: form.steam_deck,
       updated_at: new Date().toISOString()
     };
 
