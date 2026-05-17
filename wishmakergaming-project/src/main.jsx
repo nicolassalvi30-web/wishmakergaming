@@ -400,7 +400,7 @@ function ReviewPage({ slug }) {
 
   if (!clean) return <br key={i}/>;
   if (clean.toLowerCase().includes('score:')) return <p key={i} className="scoreLine">{line}</p>;
-  if (clean.startsWith('- ')) return <li key={i}>{clean.replace('- ', '')}</li>;
+  if (clean.startsWith('- ')) return <p key={i}>• {clean.replace('- ', '')}</p>;
   if (/^(Final Verdict|What Makes .* Special|Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Who Should Play It|Final Score)$/i.test(clean)) return <h2 key={i}>{clean}</h2>;
   if (clean.startsWith('# ')) return <h2 key={i}>{clean.replace('# ', '')}</h2>;
   if (clean.startsWith('## ')) return <h3 key={i}>{clean.replace('## ', '')}</h3>;
