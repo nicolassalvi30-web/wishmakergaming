@@ -399,8 +399,8 @@ function ReviewPage({ slug }) {
                 if (clean.startsWith('# ')) return <h2 key={i}>{clean.replace('# ', '')}</h2>;
                 if (clean.startsWith('## ')) return <h3 key={i}>{clean.replace('## ', '')}</h3>;
                 if (clean.toLowerCase().includes('score:')) return <p key={i} className="scoreLine">{line}</p>;
-                if (clean.match(/(Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Final Verdict|Who Should Play|Pros|Cons|What Makes)/i)) return <h2 key={i}>{clean}</h2>;
                 if (clean.startsWith('- ')) return <li key={i}>{clean.replace('- ', '')}</li>;
+                if (clean.match(/(Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Final Verdict|Who Should Play|Pros|Cons|What Makes)/i)) return <h2 key={i}>{clean}</h2>;
                 return <p key={i}>{line}</p>;
               })}
             </div>
