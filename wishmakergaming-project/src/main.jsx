@@ -270,78 +270,87 @@ function ReviewPage({ slug }) {
   const [related, setRelated] = useState([]);
 
   useEffect(() => {
-  setLoadingPost(true);
+    setLoadingPost(true);
 
-  const cleanSlug = decodeURIComponent(slug || '').trim();
+    const cleanSlug = decodeURIComponent(slug || '').trim();
 
-  supabase
-    .from('posts')
-    .select('*')
-    .eq('slug', cleanSlug)
-    .eq('status', 'published')
-    .maybeSingle()
-    .then(({ data, error }) => {
-      if (error) console.error('Review load error:', error);
-      setPost(data || null);
-      setLoadingPost(false);
+    supabase
+      .from('posts')
+      .select('*')
+      .eq('slug', cleanSlug)
+      .eq('status', 'published')
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (error) console.error('Review load error:', error);
 
-      if (data) {
-        supabase
-          .from('posts')
-          .select('*')
-          .eq('status', 'published')
-          .neq('slug', cleanSlug)
-          .limit(3)
-          .then(({ data }) => setRelated(data || []));
-      }
-    });
-}, [slug]);
+        setPost(data || null);
+        setLoadingPost(false);
+
+        if (data) {
+          supabase
+            .from('posts')
+            .select('*')
+            .eq('status', 'published')
+            .neq('slug', cleanSlug)
+            .limit(3)
+            .then(({ data }) => setRelated(data || []));
+        }
+      });
+  }, [slug]);
 
   if (loadingPost) {
-  return (
-    <>
-      <Header />
-      <main className="article">
-        <h1>Loading review...</h1>
-      </main>
-    </>
-  );
-}
+    return (
+      <>
+        <Header />
+        <main className="article">
+          <h1>Loading review...</h1>
+        </main>
+      </>
+    );
+  }
 
-if (!post) {
-  return (
-    <>
-      <Header />
-      <main className="article">
-        <h1>Review not found</h1>
-      </main>
-    </>
-  );
-}
+  if (!post) {
+    return (
+      <>
+        <Header />
+        <main className="article">
+          <h1>Review not found</h1>
+        </main>
+      </>
+    );
+  }
+
   const body = post.body || '';
-
   const pros = getSectionItems(body, 'Pros');
   const cons = getSectionItems(body, 'Cons');
+  const percent = scorePercent(post.score);
 
   const articleBody = body
-  .replace(/\nPros\n[\s\S]*?(?=\nCons\n)/i, '\n')
-  .replace(/\nCons\n[\s\S]*?(?=\n(Who Should Play|Final Score|Final Verdict)|$)/i, '\n');
+    .replace(/\nPros\n[\s\S]*?(?=\nCons\n)/i, '\n')
+    .replace(/\nCons\n[\s\S]*?(?=\n(Who Should Play|Final Score|Final Verdict)|$)/i, '\n');
+
   return (
     <>
       <Header />
+
       <main className="ultimateReview">
-        <section className="reviewCinematicHero" style={{
-          backgroundImage: post.cover_image_url
-            ? `linear-gradient(90deg, rgba(8,8,15,.98), rgba(8,8,15,.72), rgba(8,8,15,.35)), url(${post.cover_image_url})`
-            : undefined
-        }}>
+        <section
+          className="reviewCinematicHero"
+          style={{
+            backgroundImage: post.cover_image_url
+              ? `linear-gradient(90deg, rgba(8,8,15,.98), rgba(8,8,15,.72), rgba(8,8,15,.35)), url(${post.cover_image_url})`
+              : undefined,
+          }}
+        >
           <div className="reviewHeroContent">
             <div className="reviewMeta">
               <span className="tag">{post.category || 'Review'}</span>
               <span><Clock size={14}/> WishMakerGaming Review</span>
             </div>
+
             <h1>{post.title}</h1>
             <p>{post.seo_description}</p>
+
             <div className="heroReviewActions">
               <a href="#verdict" className="primary">Jump to Verdict</a>
               <a href="#review" className="secondary">Read Full Review</a>
@@ -349,7 +358,7 @@ if (!post) {
           </div>
 
           <aside className="cinematicScoreCard">
-            <div className="scoreRing" style={{'--score': percent}}>
+            <div className="scoreRing" style={{ '--score': percent }}>
               <span>{post.score}</span>
               <small>/10</small>
             </div>
@@ -359,51 +368,51 @@ if (!post) {
         </section>
 
         <section className="reviewQuickGrid">
-        <div className="quickCard">
-  <small>Developer</small>
-  <strong>{post.developer || 'Unknown'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Developer</small>
+            <strong>{post.developer || 'Unknown'}</strong>
+          </div>
 
-<div className="quickCard">
-  <small>Publisher</small>
-  <strong>{post.publisher || 'Unknown'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Publisher</small>
+            <strong>{post.publisher || 'Unknown'}</strong>
+          </div>
 
-<div className="quickCard">
-  <small>Platforms</small>
-  <strong>{post.platforms || 'Unknown'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Platforms</small>
+            <strong>{post.platforms || 'Unknown'}</strong>
+          </div>
 
-<div className="quickCard">
-  <small>Release</small>
-  <strong>{post.release_date || 'TBA'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Release</small>
+            <strong>{post.release_date || 'TBA'}</strong>
+          </div>
 
-<div className="quickCard">
-  <small>Hours Played</small>
-  <strong>{post.hours_played || '-'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Hours Played</small>
+            <strong>{post.hours_played || '-'}</strong>
+          </div>
 
-<div className="quickCard">
-  <small>Completion</small>
-  <strong>{post.completion_status || '-'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Completion</small>
+            <strong>{post.completion_status || '-'}</strong>
+          </div>
 
-<div className="quickCard">
-  <small>Multiplayer</small>
-  <strong>{post.multiplayer || '-'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Multiplayer</small>
+            <strong>{post.multiplayer || '-'}</strong>
+          </div>
 
-<div className="quickCard">
-  <small>Steam Deck</small>
-  <strong>{post.steam_deck || '-'}</strong>
-</div>
+          <div className="quickCard">
+            <small>Steam Deck</small>
+            <strong>{post.steam_deck || '-'}</strong>
+          </div>
         </section>
 
         <section id="review" className="reviewMainLayout">
           <article className="reviewArticle">
             <div className="editorialIntro">
-              <Sparkles/>
+              <Sparkles />
               <div>
                 <h2>Quick Verdict</h2>
                 <p>{post.seo_description}</p>
@@ -416,69 +425,75 @@ if (!post) {
                   <h3><ThumbsUp size={18}/> Pros</h3>
                   {pros.map((p, i) => <p key={i}>+ {p}</p>)}
                 </div>
+
                 <div>
                   <h3><ThumbsDown size={18}/> Cons</h3>
-                  {cons.map((c, i) => <p key={i}>− {c}</p>)}
+                  {cons.map((c, i) => <p key={i}>– {c}</p>)}
                 </div>
               </div>
             )}
 
-  <div className="articleBody ultimateBody">
-{articleBody.split('\n').map((line, i) => {
-  const clean = line.trim();
+            <div className="articleBody ultimateBody">
+              {articleBody.split('\n').map((line, i) => {
+                const clean = line.trim();
 
-  if (!clean) return <br key={i}/>;
-  if (clean.toLowerCase().includes('score:')) return <p key={i} className="scoreLine">{line}</p>;
-  if (clean.startsWith('- ')) return <p key={i}>• {clean.replace('- ', '')}</p>;
-  if (/^(Final Verdict|What Makes .* Special|Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Who Should Play It|Final Score)$/i.test(clean)) return <h2 key={i}>{clean}</h2>;
-  if (clean.startsWith('# ')) return <h2 key={i}>{clean.replace('# ', '')}</h2>;
-  if (clean.startsWith('## ')) return <h3 key={i}>{clean.replace('## ', '')}</h3>;
+                if (!clean) return <br key={i} />;
+                if (clean.toLowerCase().includes('score:')) return <p key={i} className="scoreLine">{line}</p>;
+                if (clean.startsWith('- ')) return <p key={i}>• {clean.replace('- ', '')}</p>;
+                if (/^(Final Verdict|What Makes .* Special|Gameplay|Replayability|Graphics \/ Presentation|Presentation|Value|Who Should Play It|Final Score)$/i.test(clean)) return <h2 key={i}>{clean}</h2>;
+                if (clean.startsWith('# ')) return <h2 key={i}>{clean.replace('# ', '')}</h2>;
+                if (clean.startsWith('## ')) return <h3 key={i}>{clean.replace('## ', '')}</h3>;
 
-  return <p key={i}>{line}</p>;
-})}
+                return <p key={i}>{line}</p>;
+              })}
             </div>
           </article>
 
           <aside className="reviewSticky">
             <div id="verdict" className="stickyVerdict">
-              <Trophy/>
+              <Trophy />
               <span>{post.score}/10</span>
               <strong>{scoreLabel(post.score)}</strong>
               <p>{post.seo_description}</p>
             </div>
 
-          <div className="finalScoreBox">
-  <h2>WishMakerGaming Final Score</h2>
+            <div className="finalScoreBox">
+              <h2>WishMakerGaming Final Score</h2>
 
-  {[
-    ['Gameplay', post.gameplay_score],
-    ['Replayability', post.replayability_score],
-    ['Graphics / Presentation', post.presentation_score],
-    ['Value', post.value_score],
-  ].map(([label, score]) => (
-    <div className="scoreRow" key={label}>
-      <span>{label}</span>
-      <strong>{score ?? '-'}</strong>
-    </div>
-  ))}
+              {[
+                ['Gameplay', post.gameplay_score],
+                ['Replayability', post.replayability_score],
+                ['Graphics / Presentation', post.presentation_score],
+                ['Value', post.value_score],
+              ].map(([label, score]) => (
+                <div className="scoreRow" key={label}>
+                  <span>{label}</span>
+                  <strong>{score ?? '-'}</strong>
+                </div>
+              ))}
 
-  <div className="finalVerdict">
-    <span>Final Verdict</span>
-    <strong>{post.score}</strong>
-    <p>{scoreLabel(post.score)}</p>
-  </div>
-</div>
+              <div className="finalVerdict">
+                <span>Final Verdict</span>
+                <strong>{post.score}</strong>
+                <p>{scoreLabel(post.score)}</p>
+              </div>
+            </div>
 
             <div className="mediaPrompt">
-              <ImageIcon/>
+              <ImageIcon />
               <h3>Make It Pop</h3>
-              <p>Add 3–5 image URLs inside the article later for a full screenshot gallery system.</p>
+              <p>Add trailer embeds and screenshot galleries later for a full multimedia review system.</p>
             </div>
 
             {related.length > 0 && (
               <div className="related">
                 <h3>Related Reviews</h3>
-                {related.map(r => <a key={r.id} href={`/reviews/${r.slug}`}>{r.title}<small>{r.score}/10</small></a>)}
+                {related.map(r => (
+                  <a key={r.id} href={`/reviews/${r.slug}`}>
+                    {r.title}
+                    <small>{r.score}/10</small>
+                  </a>
+                ))}
               </div>
             )}
           </aside>
