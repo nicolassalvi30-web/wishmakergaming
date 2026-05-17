@@ -326,10 +326,45 @@ function ReviewPage({ slug }) {
         </section>
 
         <section className="reviewQuickGrid">
-          <div className="quickCard"><Gamepad2/><span>Gameplay</span><strong>40%</strong></div>
-          <div className="quickCard"><Shield/><span>Replayability</span><strong>20%</strong></div>
-          <div className="quickCard"><Star/><span>Presentation</span><strong>20%</strong></div>
-          <div className="quickCard"><Search/><span>Value</span><strong>20%</strong></div>
+        <div className="quickCard">
+  <small>Developer</small>
+  <strong>{post.developer || 'Unknown'}</strong>
+</div>
+
+<div className="quickCard">
+  <small>Publisher</small>
+  <strong>{post.publisher || 'Unknown'}</strong>
+</div>
+
+<div className="quickCard">
+  <small>Platforms</small>
+  <strong>{post.platforms || 'Unknown'}</strong>
+</div>
+
+<div className="quickCard">
+  <small>Release</small>
+  <strong>{post.release_date || 'TBA'}</strong>
+</div>
+
+<div className="quickCard">
+  <small>Hours Played</small>
+  <strong>{post.hours_played || '-'}</strong>
+</div>
+
+<div className="quickCard">
+  <small>Completion</small>
+  <strong>{post.completion_status || '-'}</strong>
+</div>
+
+<div className="quickCard">
+  <small>Multiplayer</small>
+  <strong>{post.multiplayer || '-'}</strong>
+</div>
+
+<div className="quickCard">
+  <small>Steam Deck</small>
+  <strong>{post.steam_deck || '-'}</strong>
+</div>
         </section>
 
         <section id="review" className="reviewMainLayout">
