@@ -296,8 +296,27 @@ function ReviewPage({ slug }) {
     });
 }, [slug]);
 
-  if (!post) return <><Header /><main className="article"><h1>Review not found</h1></main></>;
+  if (loadingPost) {
+  return (
+    <>
+      <Header />
+      <main className="article">
+        <h1>Loading review...</h1>
+      </main>
+    </>
+  );
+}
 
+if (!post) {
+  return (
+    <>
+      <Header />
+      <main className="article">
+        <h1>Review not found</h1>
+      </main>
+    </>
+  );
+}
   const pros = getSectionItems(post.body, 'Pros');
   const cons = getSectionItems(post.body, 'Cons');
   const percent = scorePercent(post.score);
