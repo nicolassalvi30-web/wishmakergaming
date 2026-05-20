@@ -139,11 +139,11 @@ const filtered = posts.filter(p => {
           </div>
           <div className="featuredStack">
   {posts.slice(0, 2).map(post => (
-    <Link
-      key={post.id}
-      to={`/reviews/${post.slug}`}
-      className="secondaryFeatureCard"
-    >
+    <a
+  key={post.id}
+  href={`/reviews/${post.slug}`}
+  className="secondaryFeatureCard"
+>
       <img src={post.cover_image_url} alt={post.title} />
 
       <div className="secondaryFeatureOverlay">
@@ -153,7 +153,7 @@ const filtered = posts.filter(p => {
 
         <p>{post.seo_description}</p>
       </div>
-    </Link>
+    </a>
   ))}
 </div>
         </section>
