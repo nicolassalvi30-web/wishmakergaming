@@ -334,6 +334,9 @@ return () => {
   if (!post) {
     return (
       <>
+    <div className="readingProgress">
+      <div className="readingBar"></div>
+    </div>
         <Header />
         <main className="article">
           <h1>Review not found</h1>
