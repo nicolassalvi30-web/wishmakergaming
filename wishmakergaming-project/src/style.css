@@ -754,3 +754,39 @@ margin:0;
 .cardBottom strong.scoreMid{
   color:#f87171 !important;
 }
+.masterpieceRing{
+  box-shadow:
+    0 0 40px rgba(250,204,21,.18);
+}
+
+.masterpieceRing::before{
+  background:
+    conic-gradient(
+      #facc15 calc(var(--score) * 1%),
+      rgba(255,255,255,.08) 0
+    ) !important;
+}
+
+.amazingRing::before{
+  background:
+    conic-gradient(
+      #22d3ee calc(var(--score) * 1%),
+      rgba(255,255,255,.08) 0
+    ) !important;
+}
+
+.goodRing::before{
+  background:
+    conic-gradient(
+      #a855f7 calc(var(--score) * 1%),
+      rgba(255,255,255,.08) 0
+    ) !important;
+}
+
+.midRing::before{
+  background:
+    conic-gradient(
+      #f87171 calc(var(--score) * 1%),
+      rgba(255,255,255,.08) 0
+    ) !important;
+}
