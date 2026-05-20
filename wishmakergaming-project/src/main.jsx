@@ -246,7 +246,19 @@ function ReviewCard({ post }) {
         <h3>{post.title}</h3>
         <p>{post.seo_description}</p>
         <div className="cardBottom">
-          <strong>{post.score}/10</strong>
+          <strong
+  className={
+    post.score >= 9.5
+      ? 'scoreMasterpiece'
+      : post.score >= 9
+      ? 'scoreAmazing'
+      : post.score >= 8
+      ? 'scoreGood'
+      : 'scoreMid'
+  }
+>
+  {post.score}/10
+</strong>
           <small>{scoreLabel(post.score)}</small>
         </div>
       </div>
