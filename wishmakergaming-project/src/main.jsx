@@ -296,6 +296,25 @@ function ReviewPage({ slug }) {
     });
 }
       });
+    const handleScroll = () => {
+  const scrollTop = window.scrollY;
+  const docHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const progress = (scrollTop / docHeight) * 100;
+
+  const bar = document.querySelector('.readingBar');
+
+  if (bar) {
+    bar.style.width = `${progress}%`;
+  }
+};
+
+window.addEventListener('scroll', handleScroll);
+
+return () => {
+  window.removeEventListener('scroll', handleScroll);
+};
   }, [slug]);
 
   if (loadingPost) {
