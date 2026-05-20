@@ -406,7 +406,18 @@ return () => {
           </div>
 
           <aside className="cinematicScoreCard">
-            <div className="scoreRing" style={{ '--score': percent }}>
+            <div
+  className={`scoreRing ${
+    post.score >= 9.5
+      ? 'masterpieceRing'
+      : post.score >= 9
+      ? 'amazingRing'
+      : post.score >= 8
+      ? 'goodRing'
+      : 'midRing'
+  }`}
+  style={{ '--score': percent }}
+>
               <span
   className={
     post.score >= 9.5
