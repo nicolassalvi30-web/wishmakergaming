@@ -693,3 +693,30 @@ margin:0;
   border-radius:999px;
   background:linear-gradient(90deg,#7c3aed,#06b6d4);
 }
+.card{
+  position:relative !important;
+  overflow:hidden !important;
+  border-radius:28px !important;
+  background:#0f0f1a !important;
+  border:1px solid #24243a !important;
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease !important;
+}
+
+.card:hover{
+  transform:translateY(-8px) !important;
+  border-color:#7c3aed !important;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.45),
+    0 0 40px rgba(124,58,237,.15) !important;
+}
+
+.card img{
+  transition:transform .6s ease !important;
+}
+
+.card:hover img{
+  transform:scale(1.04) !important;
+}
