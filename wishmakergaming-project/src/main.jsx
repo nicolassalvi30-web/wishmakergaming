@@ -284,6 +284,17 @@ function ReviewPage({ slug }) {
 
         setPost(data || null);
         setLoadingPost(false);
+        if (data) {
+  supabase
+    .from('posts')
+    .select('*')
+    .eq('status', 'published')
+    .neq('slug', cleanSlug)
+    .limit(3)
+    .then(({ data }) => {
+      setRelated(data || []);
+    });
+}
       });
   }, [slug]);
 
