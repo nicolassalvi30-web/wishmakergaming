@@ -531,3 +531,26 @@ margin:0;
 .relatedReviewCard small{
   color:#9ca3af;
 }
+.tableOfContents{
+  border:1px solid #2b2440;
+  border-radius:24px;
+  padding:24px;
+  background:linear-gradient(180deg,#11111c,#0b0b13);
+}
+
+.tableOfContents h3{
+  margin:0 0 18px;
+  font-size:20px;
+}
+
+.tableOfContents a{
+  display:block;
+  padding:12px 0;
+  color:#d4d4d8;
+  border-top:1px solid #26263a;
+  font-weight:700;
+}
+
+.tableOfContents a:hover{
+  color:#06b6d4;
+}
