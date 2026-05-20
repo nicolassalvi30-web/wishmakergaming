@@ -266,7 +266,8 @@ function getSectionItems(body, heading) {
 function ReviewPage({ slug }) {
   const [post, setPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(true);
-
+  const [related, setRelated] = useState([]);
+  
   useEffect(() => {
     setLoadingPost(true);
 
