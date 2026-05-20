@@ -456,7 +456,16 @@ function ReviewPage({ slug }) {
               <strong>{scoreLabel(post.score)}</strong>
               <p>{post.seo_description}</p>
             </div>
-
+<div className="tableOfContents">
+  <h3>Review Sections</h3>
+  <a href="#final-verdict">Final Verdict</a>
+  <a href="#gameplay">Gameplay</a>
+  <a href="#replayability">Replayability</a>
+  <a href="#presentation">Presentation</a>
+  <a href="#value">Value</a>
+  <a href="#who-should-play">Who Should Play It</a>
+  <a href="#final-score">Final Score</a>
+</div>
             <div className="finalScoreBox">
               <h2>WishMakerGaming Final Score</h2>
 
