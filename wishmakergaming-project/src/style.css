@@ -737,3 +737,20 @@ margin:0;
 .scoreMid{
   color:#f87171;
 }
+.cardBottom strong.scoreMasterpiece{
+  color:#facc15 !important;
+  text-shadow:0 0 18px rgba(250,204,21,.45);
+}
+
+.cardBottom strong.scoreAmazing{
+  color:#22d3ee !important;
+  text-shadow:0 0 18px rgba(34,211,238,.35);
+}
+
+.cardBottom strong.scoreGood{
+  color:#a855f7 !important;
+}
+
+.cardBottom strong.scoreMid{
+  color:#f87171 !important;
+}
