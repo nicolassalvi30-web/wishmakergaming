@@ -170,12 +170,13 @@ const filtered = posts.filter(p => {
   <div className="sectionTop">
     <h2>Top Rated Games</h2>
   </div>
-  <div className="grid">
-    {[...posts]
-      .sort((a,b) => b.score - a.score)
-      .slice(0,3)
-      .map(post => <ReviewCard key={post.id} post={post} />)}
-  </div>
+ <div className="grid">
+  {[...posts]
+    .sort((a,b) => b.score - a.score)
+    .slice(0,3)
+    .map(post => <ReviewCard key={post.id} post={post} />)}
+</div>
+
 <div className="sectionTop" style={{marginTop:'70px'}}>
   <h2>Must Play Spotlight</h2>
 </div>
@@ -188,9 +189,8 @@ const filtered = posts.filter(p => {
 </div>
 
 <div className="sectionTop" style={{marginTop:'70px'}}>
-  <div className="sectionTop" style={{marginTop:'70px'}}>
-    <h2>Editor's Picks</h2>
-  </div>
+  <h2>Editor's Picks</h2>
+</div>
 
   <div className="grid">
     {[...posts]
