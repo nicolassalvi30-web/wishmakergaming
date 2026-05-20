@@ -176,7 +176,18 @@ const filtered = posts.filter(p => {
       .slice(0,3)
       .map(post => <ReviewCard key={post.id} post={post} />)}
   </div>
+<div className="sectionTop" style={{marginTop:'70px'}}>
+  <h2>Must Play Spotlight</h2>
+</div>
 
+<div className="grid">
+  {posts
+    .filter(post => Number(post.score) >= 9.5)
+    .slice(0, 3)
+    .map(post => <ReviewCard key={post.id} post={post} />)}
+</div>
+
+<div className="sectionTop" style={{marginTop:'70px'}}>
   <div className="sectionTop" style={{marginTop:'70px'}}>
     <h2>Editor's Picks</h2>
   </div>
