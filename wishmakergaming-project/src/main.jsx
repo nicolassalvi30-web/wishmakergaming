@@ -484,6 +484,23 @@ function ReviewPage({ slug }) {
               <h3>Make It Pop</h3>
               <p>Add trailer embeds and screenshot galleries later for a full multimedia review system.</p>
             </div>
+            {related.length > 0 && (
+  <div className="relatedReviews">
+    <h3>Related Reviews</h3>
+
+    {related.map(r => (
+      <a
+        key={r.id}
+        href={`/reviews/${r.slug}`}
+        className="relatedReviewCard"
+      >
+        <span>{r.category}</span>
+        <strong>{r.title}</strong>
+        <small>{r.score}/10</small>
+      </a>
+    ))}
+  </div>
+)}
           </aside>
         </section>
       </main>
