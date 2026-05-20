@@ -137,24 +137,25 @@ const filtered = posts.filter(p => {
               <div><strong>100%</strong><small>Player Focused</small></div>
             </div>
           </div>
-          <div className="featured">
-            <p className="eyebrow">Featured Review</p>
-            {featured ? (
-              <>
-                {featured.cover_image_url && <img src={featured.cover_image_url} alt={featured.title} />}
-                <h2>{featured.title}</h2>
-                <div className="score">{featured.score}<small>/10</small></div>
-                <p>{featured.seo_description}</p>
-                <a href={`/reviews/${featured.slug}`} className="primary small">Read Review</a>
-              </>
-            ) : (
-              <>
-                <h2>No reviews published yet</h2>
-                <p>Publish your first review from the CMS.</p>
-                <a href="/admin" className="primary small">Go to CMS</a>
-              </>
-            )}
-          </div>
+          <div className="featuredStack">
+  {posts.slice(0, 2).map(post => (
+    <Link
+      key={post.id}
+      to={`/reviews/${post.slug}`}
+      className="secondaryFeatureCard"
+    >
+      <img src={post.cover_image_url} alt={post.title} />
+
+      <div className="secondaryFeatureOverlay">
+        <span>{post.category || 'Review'}</span>
+
+        <h3>{post.title}</h3>
+
+        <p>{post.seo_description}</p>
+      </div>
+    </Link>
+  ))}
+</div>
         </section>
 
         <section className="pillars">
