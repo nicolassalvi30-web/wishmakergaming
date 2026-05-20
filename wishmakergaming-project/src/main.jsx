@@ -301,6 +301,9 @@ function ReviewPage({ slug }) {
   if (loadingPost) {
     return (
       <>
+<div className="readingProgress">
+  <div className="readingBar"></div>
+</div>
         <Header />
         <main className="article">
           <h1>Loading review...</h1>
