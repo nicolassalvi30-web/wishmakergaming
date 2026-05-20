@@ -800,3 +800,13 @@ margin:0;
   letter-spacing:1px;
   text-transform:uppercase;
 }
+.cardBody{
+  position:relative !important;
+  z-index:2 !important;
+}
+
+.card img{
+  filter:
+    brightness(.82)
+    saturate(1.08) !important;
+}
