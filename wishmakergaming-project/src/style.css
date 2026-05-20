@@ -847,3 +847,29 @@ margin:0;
     transform:scale(1.15) translateY(40px);
   }
 }
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr !important;
+    gap:28px;
+  }
+
+  .featuredStack{
+    grid-template-columns:1fr !important;
+  }
+
+  .grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .reviewMainLayout{
+    grid-template-columns:1fr !important;
+  }
+
+  .reviewSticky{
+    position:static !important;
+  }
+
+  .reviewCinematicHero h1{
+    font-size:clamp(42px,10vw,72px) !important;
+  }
+}
