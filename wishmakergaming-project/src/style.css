@@ -571,3 +571,41 @@ margin:0;
   box-shadow:0 0 12px rgba(124,58,237,.7);
   transition:width .08s linear;
 }
+.authorBox{
+  margin-top:28px;
+  border:1px solid #2b2440;
+  border-radius:26px;
+  background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(6,182,212,.08));
+  padding:26px;
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.authorAvatar{
+  width:64px;
+  height:64px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#7c3aed,#06b6d4);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+
+.authorBox span{
+  color:#06b6d4;
+  text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:1.5px;
+  font-weight:900;
+}
+
+.authorBox h3{
+  margin:4px 0 8px;
+}
+
+.authorBox p{
+  margin:0;
+  color:#d4d4d8;
+  line-height:1.6;
+}
