@@ -356,6 +356,9 @@ return () => {
 
   return (
     <>
+ <div className="readingProgress">
+      <div className="readingBar"></div>
+    </div>
       <Header />
 
       <main className="ultimateReview">
