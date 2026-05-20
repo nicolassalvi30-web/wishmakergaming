@@ -407,7 +407,19 @@ return () => {
 
           <aside className="cinematicScoreCard">
             <div className="scoreRing" style={{ '--score': percent }}>
-              <span>{post.score}</span>
+              <span
+  className={
+    post.score >= 9.5
+      ? 'scoreMasterpiece'
+      : post.score >= 9
+      ? 'scoreAmazing'
+      : post.score >= 8
+      ? 'scoreGood'
+      : 'scoreMid'
+  }
+>
+  {post.score}
+</span>
               <small>/10</small>
             </div>
             <strong>{scoreLabel(post.score)}</strong>
