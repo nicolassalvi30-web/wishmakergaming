@@ -810,3 +810,40 @@ margin:0;
     brightness(.82)
     saturate(1.08) !important;
 }
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(124,58,237,.22),
+      transparent 70%
+    );
+
+  top:-260px;
+  right:-120px;
+
+  filter:blur(20px);
+
+  animation:heroGlow 8s ease-in-out infinite alternate;
+
+  pointer-events:none;
+}
+
+@keyframes heroGlow{
+  from{
+    transform:scale(1) translateY(0px);
+  }
+
+  to{
+    transform:scale(1.15) translateY(40px);
+  }
+}
