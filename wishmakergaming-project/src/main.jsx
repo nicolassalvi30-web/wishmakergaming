@@ -469,6 +469,17 @@ return () => {
   return <p key={i}>{line}</p>;
 })}
             </div>
+            <div className="authorBox">
+  <div className="authorAvatar">WMG</div>
+  <div>
+    <span>Reviewed by</span>
+    <h3>WishMakerGaming</h3>
+    <p>
+      Player-first reviews focused on honest scoring, clear recommendations,
+      and whether a game is truly worth your time.
+    </p>
+  </div>
+</div>
           </article>
 
           <aside className="reviewSticky">
