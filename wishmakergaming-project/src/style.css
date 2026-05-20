@@ -720,3 +720,20 @@ margin:0;
 .card:hover img{
   transform:scale(1.04) !important;
 }
+.scoreMasterpiece{
+  color:#facc15;
+  text-shadow:0 0 18px rgba(250,204,21,.35);
+}
+
+.scoreAmazing{
+  color:#22d3ee;
+  text-shadow:0 0 18px rgba(34,211,238,.25);
+}
+
+.scoreGood{
+  color:#a855f7;
+}
+
+.scoreMid{
+  color:#f87171;
+}
