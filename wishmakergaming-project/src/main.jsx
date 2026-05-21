@@ -572,8 +572,8 @@ return () => {
 
             <div className="mediaPrompt">
               <ImageIcon />
-              <h3>Make It Pop</h3>
-              <p>Add trailer embeds and screenshot galleries later for a full multimedia review system.</p>
+              <h3>Coming Soon</h3>
+              <p>Trailer embeds, gameplay galleries, cinematic screenshots, and multimedia review features are coming soon to WishMakerGaming.</p>
             </div>
             {related.length > 0 && (
   <div className="relatedReviews">
