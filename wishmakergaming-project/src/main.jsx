@@ -287,6 +287,7 @@ function ReviewPage({ slug }) {
   const [post, setPost] = useState(null);
   const [loadingPost, setLoadingPost] = useState(true);
   const [related, setRelated] = useState([]);
+  const [selectedScreenshot, setSelectedScreenshot] = useState(null);
   
   useEffect(() => {
     setLoadingPost(true);
