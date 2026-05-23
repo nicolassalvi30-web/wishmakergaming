@@ -960,19 +960,20 @@ margin:0;
   border-radius: 16px;
 }
 .brandText {
-  font-weight: 800;
   font-size: 2rem;
-  display: flex;
-  gap: 0;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
 }
-.wish {
+
+.brandText .wish {
   color: #9b4dff;
 }
 
-.maker {
+.brandText .maker {
   color: #00e5ff;
 }
 
-.gaming {
+.brandText .gaming {
   color: #9b4dff;
 }
