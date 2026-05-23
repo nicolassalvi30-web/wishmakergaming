@@ -505,7 +505,32 @@ return () => {
                 </div>
               </div>
             )}
+{post.trailer && (
+  <div className="trailerSection">
+    <h2>Launch Trailer</h2>
 
+    <div className="trailerWrapper">
+      <iframe
+        src={post.trailer}
+        title={post.title}
+        frameBorder="0"
+        allowFullScreen
+      />
+    </div>
+  </div>
+)}
+
+{post.screenshots && post.screenshots.length > 0 && (
+  <div className="screenshotsSection">
+    <h2>Screenshots</h2>
+
+    <div className="screenshotsGrid">
+      {post.screenshots.map((shot, index) => (
+        <img key={index} src={shot} alt={post.title} />
+      ))}
+    </div>
+  </div>
+)}
             <div className="articleBody ultimateBody">
               {articleBody.split('\n').map((line, i) => {
   const text = line.trim();
