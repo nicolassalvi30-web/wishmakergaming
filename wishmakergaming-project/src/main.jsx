@@ -79,7 +79,11 @@ function Header() {
   className="mainLogo"
 />
         <div>
-          <strong>WishMaker<span>Gaming</span></strong>
+          <strong className="brandText">
+  <span className="wish">Wish</span>
+  <span className="maker">Maker</span>
+  <span className="gaming">Gaming</span>
+</strong>
           <small>Built for Players. Honest Reviews. Better Gaming.</small>
         </div>
       </a>
