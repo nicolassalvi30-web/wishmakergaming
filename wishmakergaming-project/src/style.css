@@ -946,3 +946,15 @@ margin:0;
 .screenshotsSection {
   margin-bottom: 48px;
 }
+.mainLogo {
+  width: 260px;
+  height: auto;
+  object-fit: contain;
+}
+
+.authorAvatar {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 16px;
+}
