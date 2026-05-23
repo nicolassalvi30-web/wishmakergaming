@@ -873,3 +873,42 @@ margin:0;
     font-size:clamp(42px,10vw,72px) !important;
   }
 }
+.trailerSection,
+.screenshotsSection{
+  margin-top:40px;
+}
+
+.trailerWrapper{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  border-radius:16px;
+  overflow:hidden;
+  margin-top:16px;
+}
+
+.trailerWrapper iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.screenshotsGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.screenshotsGrid img{
+  width:100%;
+  border-radius:14px;
+  object-fit:cover;
+  transition:0.3s ease;
+}
+
+.screenshotsGrid img:hover{
+  transform:scale(1.02);
+}
