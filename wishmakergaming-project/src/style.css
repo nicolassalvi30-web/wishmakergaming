@@ -947,9 +947,10 @@ margin:0;
   margin-bottom: 48px;
 }
 .mainLogo {
-  width: 260px;
+  width: 140px;
   height: auto;
   object-fit: contain;
+  display: block;
 }
 
 .authorAvatar {
