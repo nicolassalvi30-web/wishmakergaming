@@ -35,6 +35,8 @@ const emptyPost = {
   completion_status: '',
   multiplayer: '',
   steam_deck: '',
+  trailer: '',
+  screenshots: [],
   status: 'draft',
 };
 
