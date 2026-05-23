@@ -521,10 +521,10 @@ return () => {
 )}
 
 {(() => {
-  const shots = Array.isArray(post.screenshots)
-  ? post.screenshots
+ const shots = Array.isArray(post.screenshots)
+  ? post.screenshots.map(url => url.trim()).filter(Boolean)
   : typeof post.screenshots === "string"
-    ? post.screenshots.split("\n").filter(Boolean)
+    ? post.screenshots.split("\n").map(url => url.trim()).filter(Boolean)
     : [];
 
   return shots.length > 0 ? (
