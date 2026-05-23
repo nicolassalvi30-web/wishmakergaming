@@ -854,6 +854,29 @@ function AdminCMS() {
               <input value={form.completion_status} onChange={e => updateField('completion_status', e.target.value)} placeholder="Completion Status" />
               <input value={form.multiplayer} onChange={e => updateField('multiplayer', e.target.value)} placeholder="Multiplayer" />
               <input value={form.steam_deck} onChange={e => updateField('steam_deck', e.target.value)} placeholder="Steam Deck Support" />
+              <input 
+                className="wide"
+                value={form.trailer || ''}
+                onChange={e => updateField('trailer', e.target.value)}
+                placeholder="YouTube Embed URL"
+/>
+
+<textarea
+  className="wide"
+  rows="4"
+  value={
+    Array.isArray(form.screenshots)
+      ? form.screenshots.join('\n')
+      : ''
+  }
+  onChange={e =>
+    updateField(
+      'screenshots',
+      e.target.value.split('\n').filter(Boolean)
+    )
+  }
+  placeholder="One screenshot URL per line"
+/>
             </div>
             <textarea value={form.body} onChange={e => updateField('body', e.target.value)} placeholder="Paste or write full review here..." />
             <div className="actions">
