@@ -542,6 +542,17 @@ return () => {
     onClick={() => setSelectedScreenshot(shot)}
   />
 ))}
+        {selectedScreenshot && (
+  <div
+    className="screenshotModal"
+    onClick={() => setSelectedScreenshot(null)}
+  >
+    <img
+      src={selectedScreenshot}
+      alt="Full screen screenshot"
+    />
+  </div>
+)}
       </div>
     </div>
   ) : null;
