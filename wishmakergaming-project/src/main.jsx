@@ -884,7 +884,10 @@ function AdminCMS() {
   onChange={e =>
     updateField(
       'screenshots',
-      e.target.value.split('\n').filter(Boolean)
+      e.target.value
+  .split('\n')
+  .map(url => url.trim())
+  .filter(Boolean)
     )
   }
   placeholder="One screenshot URL per line"
