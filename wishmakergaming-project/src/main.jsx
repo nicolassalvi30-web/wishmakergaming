@@ -533,8 +533,14 @@ return () => {
 
       <div className="screenshotsGrid">
         {shots.map((shot, index) => (
-          <img key={index} src={shot} alt={post.title} />
-        ))}
+  <img
+    key={index}
+    src={shot}
+    alt={`${post.title} screenshot ${index + 1}`}
+    className="screenshotImage"
+    onClick={() => setSelectedScreenshot(shot)}
+  />
+))}
       </div>
     </div>
   ) : null;
