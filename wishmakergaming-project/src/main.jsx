@@ -73,7 +73,11 @@ function Header() {
   return (
     <header className="header">
       <a href="/" className="brand">
-        <div className="logo">WMG</div>
+       <img
+  src="/new-logo.png"
+  alt="WishMakerGaming"
+  className="mainLogo"
+/>
         <div>
           <strong>WishMaker<span>Gaming</span></strong>
           <small>Built for Players. Honest Reviews. Better Gaming.</small>
