@@ -943,3 +943,6 @@ margin:0;
   object-fit: contain;
   border-radius: 12px;
 }
+.screenshotsSection {
+  margin-bottom: 48px;
+}
