@@ -520,20 +520,23 @@ return () => {
   </div>
 )}
 
-{post.screenshots && (
-  <div className="screenshotsSection">
-    <h2>Screenshots</h2>
+{(() => {
+  const shots = Array.isArray(post.screenshots)
+    ? post.screenshots
+    : JSON.parse(post.screenshots || '[]');
 
-    <div className="screenshotsGrid">
-      {{(Array.isArray(post.screenshots)
-  ? post.screenshots
-  : JSON.parse(post.screenshots || '[]')
-).map((shot, index) => (
-        <img key={index} src={shot} alt={post.title} />
-      ))}
+  return shots.length > 0 ? (
+    <div className="screenshotsSection">
+      <h2>Screenshots</h2>
+
+      <div className="screenshotsGrid">
+        {shots.map((shot, index) => (
+          <img key={index} src={shot} alt={post.title} />
+        ))}
+      </div>
     </div>
-  </div>
-)}
+  ) : null;
+})()}
             <div className="articleBody ultimateBody">
               {articleBody.split('\n').map((line, i) => {
   const text = line.trim();
