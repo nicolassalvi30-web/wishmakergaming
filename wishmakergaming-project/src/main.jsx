@@ -576,7 +576,11 @@ return () => {
 })}
             </div>
             <div className="authorBox">
-  <div className="authorAvatar">WMG</div>
+ <img
+  src="/new-logo.png"
+  alt="WishMakerGaming"
+  className="authorAvatar"
+/>
   <div>
     <span>Reviewed by</span>
     <h3>WishMakerGaming</h3>
