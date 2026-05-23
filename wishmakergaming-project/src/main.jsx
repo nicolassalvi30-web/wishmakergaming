@@ -522,8 +522,10 @@ return () => {
 
 {(() => {
   const shots = Array.isArray(post.screenshots)
-    ? post.screenshots
-    : JSON.parse(post.screenshots || '[]');
+  ? post.screenshots
+  : typeof post.screenshots === "string"
+    ? post.screenshots.split("\n").filter(Boolean)
+    : [];
 
   return shots.length > 0 ? (
     <div className="screenshotsSection">
