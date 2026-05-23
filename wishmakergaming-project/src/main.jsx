@@ -520,12 +520,15 @@ return () => {
   </div>
 )}
 
-{post.screenshots && post.screenshots.length > 0 && (
+{post.screenshots && (
   <div className="screenshotsSection">
     <h2>Screenshots</h2>
 
     <div className="screenshotsGrid">
-      {post.screenshots.map((shot, index) => (
+      {{(Array.isArray(post.screenshots)
+  ? post.screenshots
+  : JSON.parse(post.screenshots || '[]')
+).map((shot, index) => (
         <img key={index} src={shot} alt={post.title} />
       ))}
     </div>
