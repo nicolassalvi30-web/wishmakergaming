@@ -619,7 +619,7 @@ return () => {
               {[
                 ['Gameplay', post.gameplay_score],
                 ['Replayability', post.replayability_score],
-                ['Graphics / Presentation', post.presentation_score],
+                [<>Graphics /<br />Presentation</>, post.presentation_score],
                 ['Value', post.value_score],
               ].map(([label, score]) => (
                 <div className="scoreRow" key={label}>
