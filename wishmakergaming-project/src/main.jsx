@@ -520,11 +520,11 @@ return () => {
 
     <div className="trailerWrapper">
       <iframe
-        src={post.trailer}
-        title={post.title}
-        frameBorder="0"
-        allowFullScreen
-      />
+  src={post.trailer.replace("watch?v=", "embed/")}
+  title={post.title}
+  frameBorder="0"
+  allowFullScreen
+/>
     </div>
   </div>
 )}
