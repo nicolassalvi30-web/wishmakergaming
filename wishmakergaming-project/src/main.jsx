@@ -933,7 +933,14 @@ function AdminCMS() {
 
           <aside className="manager">
             <h2>Content Manager</h2>
-            {posts.map(post => (
+             <input
+    type="text"
+    placeholder="Search reviews..."
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="w-full p-3 mb-4 rounded-xl bg-black/40 border border-purple-500/30 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+  />
+            {filteredPosts.map(post => (
               <div className="postRow" key={post.id}>
                 <div>
                   <strong>{post.title}</strong>
