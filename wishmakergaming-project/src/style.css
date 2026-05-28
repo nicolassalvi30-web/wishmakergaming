@@ -37,7 +37,7 @@
 /* Upgrade review grid */
 .grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  gap: 28px;
 }
 
 /* AAA cinematic game card */
