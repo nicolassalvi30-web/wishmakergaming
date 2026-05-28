@@ -983,3 +983,14 @@ margin:0;
 .brandText .gaming {
   color: #9b4dff;
 }
+.reviewCard{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  transition:.3s ease;
+}
+
+.reviewCard:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 35px rgba(120,80,255,.25);
+}
