@@ -273,7 +273,7 @@ const matchesCategory =
 </div>
 
 <div className="categoryFilters">
-  {categories.map(category => (
+  {mainCategories.map(category => (
     <button
       key={category}
       onClick={() => setActiveCategory(category)}
