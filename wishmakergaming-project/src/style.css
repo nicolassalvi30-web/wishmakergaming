@@ -409,7 +409,8 @@ margin:0;
   display:flex;
   flex-wrap:wrap;
   gap:12px;
-  margin:22px 0 28px;
+  margin-top:30px;
+  margin-bottom:40px;
 }
 
 .categoryFilters button{
@@ -417,16 +418,19 @@ margin:0;
   background:#11111c;
   color:#d4d4d8;
   border-radius:999px;
-  padding:10px 16px;
-  font-weight:800;
+  padding:10px 18px;
+  font-size:.95rem;
+  font-weight:700;
+  letter-spacing:.2px;
   cursor:pointer;
-  transition:.2s ease;
+  transition:all .25s ease;
 }
 
 .categoryFilters button:hover{
   border-color:#7c3aed;
   color:#fff;
-  transform:translateY(-2px);
+  transform:translateY(-3px);
+  box-shadow:0 0 20px rgba(124,58,237,.18);
 }
 
 .categoryFilters button.active{
