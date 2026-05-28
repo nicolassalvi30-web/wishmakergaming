@@ -756,7 +756,12 @@ function AdminCMS() {
     if (error) return setMessage(error.message);
     setPosts(data || []);
   }
-
+  
+  const filteredPosts = posts.filter((post) =>
+  post.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  post.genre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  post.status?.toLowerCase().includes(searchTerm.toLowerCase())
+);
   function updateField(key, value) {
     setForm(current => ({
       ...current,
