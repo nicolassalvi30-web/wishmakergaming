@@ -994,3 +994,16 @@ margin:0;
   transform:translateY(-6px);
   box-shadow:0 0 35px rgba(120,80,255,.25);
 }
+.reviewCTA{
+  margin-top:18px;
+  font-size:.95rem;
+  font-weight:800;
+  color:#7c3aed;
+  letter-spacing:.3px;
+  transition:all .25s ease;
+}
+
+.card:hover .reviewCTA{
+  color:#06b6d4;
+  transform:translateX(4px);
+}
