@@ -275,6 +275,10 @@ function ReviewCard({ post }) {
         <span className="tag">{post.category || 'Review'}</span>
         <h3>{post.title}</h3>
         <p>{post.seo_description}</p>
+        <div className="reviewCTA">
+  Read Review →
+</div>
+
         <div className="cardBottom">
           <strong
   className={
