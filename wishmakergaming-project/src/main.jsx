@@ -165,8 +165,10 @@ const filtered = posts.filter(p => {
     .toLowerCase()
     .includes(q.toLowerCase());
 
-  const matchesCategory =
-    activeCategory === 'All' || p.category === activeCategory;
+  const mappedCategory = categoryMap[p.category] || p.category;
+
+const matchesCategory =
+  activeCategory === 'All' || mappedCategory === activeCategory;
 
   return matchesSearch && matchesCategory;
 });
