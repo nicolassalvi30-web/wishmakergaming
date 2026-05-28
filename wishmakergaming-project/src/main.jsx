@@ -112,7 +112,52 @@ function HomePage() {
       .then(({ data }) => setPosts(data || []));
   }, []);
 
-  const categories = ['All', ...new Set(posts.map(p => p.category).filter(Boolean))];
+  const mainCategories = [
+  'All',
+  'Action RPG',
+  'RPG / JRPG',
+  'Soulslike',
+  'Horror',
+  'Survival',
+  'Shooter',
+  'Action Adventure',
+  'Roguelike'
+];
+
+const categoryMap = {
+  'Action RPG': 'Action RPG',
+  'Open-World Action RPG': 'Action RPG',
+
+  'Open-World RPG': 'RPG / JRPG',
+  'JRPG': 'RPG / JRPG',
+  'RPG': 'RPG / JRPG',
+
+  'Soulslike': 'Soulslike',
+  'Soulslike Action RPG': 'Soulslike',
+  'Soulslike / Action RPG': 'Soulslike',
+  'Action RPG / Soulslike Shooter': 'Soulslike',
+
+  'Survival Horror': 'Horror',
+  'Survival Horror / Action RPG': 'Horror',
+  'Horror Platformer': 'Horror',
+  'Psychological Action Adventure': 'Horror',
+  'Story-Driven Adventure / Horror': 'Horror',
+
+  'Survival Sandbox': 'Survival',
+  'Survival / Creature Collection': 'Survival',
+  'Survival / Open World Shooter': 'Survival',
+
+  'FPS': 'Shooter',
+  'Extraction Shooter': 'Shooter',
+  'Extraction Shooter / Horror FPS': 'Shooter',
+  'Co-op Shooter': 'Shooter',
+  'Looter Shooter / Action RPG': 'Shooter',
+
+  'Action Adventure': 'Action Adventure',
+
+  'Roguelike Action RPG': 'Roguelike',
+  'Roguelike RPG / Strategy': 'Roguelike'
+};
 
 const filtered = posts.filter(p => {
   const matchesSearch = [p.title, p.category, p.seo_description]
