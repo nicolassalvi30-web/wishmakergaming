@@ -22,9 +22,34 @@ export default async function handler(request, response) {
     const { slug } = request.query;
 
     let query = supabase
-      .from("reviews")
-      .select("*")
-      .order("created_at", { ascending: false });
+      .from("posts")
+      .select(`
+        id,
+        title,
+        slug,
+        score,
+        category,
+        seo_description,
+        cover_image_url,
+        status,
+        published_at,
+        gameplay_score,
+        replayability_score,
+        presentation_score,
+        value_score,
+        developer,
+        publisher,
+        release_date,
+        platforms,
+        hours_played,
+        completion_status,
+        multiplayer,
+        steam_deck,
+        trailer,
+        screenshots
+      `)
+      .eq("status", "published")
+      .order("published_at", { ascending: false });
 
     if (slug) {
       query = query.eq("slug", slug).single();
