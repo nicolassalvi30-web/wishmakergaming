@@ -821,7 +821,7 @@ function AboutPage() {
         </p>
         <p>
           We focus on games we genuinely play, especially RPGs, action games, horror,
-          multiplayer titles, MMOs, and PC gaming experiences.
+          multiplayer titles, and PC gaming experiences.
         </p>
         <p>
           Our goal is simple: no fake hype, no empty scores, no corporate noise — just
