@@ -1,9 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
-);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
 const BASE_URL = "https://www.wishmakergaming.com";
 
@@ -16,19 +14,30 @@ function escapeXml(value = "") {
     .replace(/'/g, "&apos;");
 }
 
-export default async function handler(req, res) {
+export default async function handler(request, response) {
+  if (request.method !== "GET") {
+    return response.status(405).json({
+      error: "Method not allowed",
+    });
+  }
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return response.status(500).send("Supabase environment variables are missing");
+  }
+
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
   try {
     const { data: reviews, error } = await supabase
       .from("posts")
-      .select("slug, published_at, updated_at")
+      .select("slug, published_at")
       .eq("status", "published")
       .not("slug", "is", null)
       .order("published_at", { ascending: false });
 
     if (error) {
       console.error("Sitemap Supabase error:", error);
-
-      return res.status(500).send("Unable to generate sitemap");
+      return response.status(500).send("Unable to generate sitemap");
     }
 
     const staticPages = [
@@ -48,21 +57,21 @@ export default async function handler(req, res) {
 
     const reviewPages = (reviews || []).map((review) => ({
       url: `${BASE_URL}/reviews/${review.slug}`,
-      lastmod: review.updated_at || review.published_at,
+      lastmod: review.published_at,
     }));
 
     const pages = [...staticPages, ...reviewPages];
 
     const urls = pages
       .map((page) => {
+        const lastmod = page.lastmod
+          ? `
+    <lastmod>${new Date(page.lastmod).toISOString()}</lastmod>`
+          : "";
+
         return `
   <url>
-    <loc>${escapeXml(page.url)}</loc>${
-      page.lastmod
-        ? `
-    <lastmod>${new Date(page.lastmod).toISOString()}</lastmod>`
-        : ""
-    }
+    <loc>${escapeXml(page.url)}</loc>${lastmod}
   </url>`;
       })
       .join("");
@@ -72,17 +81,16 @@ export default async function handler(req, res) {
 ${urls}
 </urlset>`;
 
-    res.setHeader("Content-Type", "application/xml; charset=utf-8");
+    response.setHeader("Content-Type", "application/xml; charset=utf-8");
 
-    res.setHeader(
+    response.setHeader(
       "Cache-Control",
       "public, s-maxage=3600, stale-while-revalidate=86400"
     );
 
-    return res.status(200).send(sitemap);
+    return response.status(200).send(sitemap);
   } catch (error) {
     console.error("Sitemap generation error:", error);
-
-    return res.status(500).send("Unable to generate sitemap");
+    return response.status(500).send("Unable to generate sitemap");
   }
 }
