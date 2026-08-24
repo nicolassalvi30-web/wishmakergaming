@@ -833,6 +833,30 @@ function AboutPage() {
 }
 
 function ReviewPolicyPage() {
+   useEffect(() => {
+    const canonicalUrl = "https://www.wishmakergaming.com/review-policy";
+
+    const pageTitle =
+      "Review Policy | WishMakerGaming";
+
+    const description =
+      "Read the WishMakerGaming review policy, including how games are scored, how reviews are written, and our commitment to honest and independent game criticism.";
+
+    document.title = pageTitle;
+
+    setMetaTag("description", description);
+    setCanonical(canonicalUrl);
+
+    setPropertyMetaTag("og:title", pageTitle);
+    setPropertyMetaTag("og:description", description);
+    setPropertyMetaTag("og:url", canonicalUrl);
+    setPropertyMetaTag("og:type", "website");
+
+    setMetaTag("twitter:card", "summary_large_image");
+    setMetaTag("twitter:title", pageTitle);
+    setMetaTag("twitter:description", description);
+  }, []);
+  
   return (
     <>
       <Header />
