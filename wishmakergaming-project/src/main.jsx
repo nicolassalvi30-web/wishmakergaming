@@ -412,6 +412,45 @@ return () => {
 };
   }, [slug]);
 
+  // ================================
+  // REVIEW PAGE SEO
+  // ================================
+  useEffect(() => {
+    if (!post) return;
+
+    const canonicalUrl =
+      `https://www.wishmakergaming.com/reviews/${post.slug}`;
+
+    const pageTitle =
+      `${post.title} | WishMakerGaming`;
+
+    const description =
+      post.seo_description ||
+      `Read the WishMakerGaming review of ${post.title}.`;
+
+    document.title = pageTitle;
+
+    setMetaTag("description", description);
+    setCanonical(canonicalUrl);
+
+    setPropertyMetaTag("og:title", pageTitle);
+    setPropertyMetaTag("og:description", description);
+    setPropertyMetaTag("og:url", canonicalUrl);
+    setPropertyMetaTag("og:type", "article");
+
+    if (post.cover_image_url) {
+      setPropertyMetaTag("og:image", post.cover_image_url);
+    }
+
+    setMetaTag("twitter:card", "summary_large_image");
+    setMetaTag("twitter:title", pageTitle);
+    setMetaTag("twitter:description", description);
+
+    if (post.cover_image_url) {
+      setMetaTag("twitter:image", post.cover_image_url);
+    }
+  }, [post]);
+
   if (loadingPost) {
     return (
       <>
