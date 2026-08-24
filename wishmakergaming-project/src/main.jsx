@@ -142,7 +142,31 @@ function HomePage() {
   const [posts, setPosts] = useState([]);
   const [q, setQ] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
-  
+ 
+  useEffect(() => {
+  const canonicalUrl = "https://www.wishmakergaming.com/";
+
+  const pageTitle =
+    "WishMakerGaming | Honest Game Reviews";
+
+  const description =
+    "Independent game reviews focused on honest scoring, clear recommendations, and whether a game is truly worth your time.";
+
+  document.title = pageTitle;
+
+  setMetaTag("description", description);
+  setCanonical(canonicalUrl);
+
+  setPropertyMetaTag("og:title", pageTitle);
+  setPropertyMetaTag("og:description", description);
+  setPropertyMetaTag("og:url", canonicalUrl);
+  setPropertyMetaTag("og:type", "website");
+
+  setMetaTag("twitter:card", "summary_large_image");
+  setMetaTag("twitter:title", pageTitle);
+  setMetaTag("twitter:description", description);
+}, []);
+ 
   useEffect(() => {
     supabase
       .from('posts')
