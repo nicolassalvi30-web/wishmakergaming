@@ -785,6 +785,30 @@ return () => {
   );
 }
 function AboutPage() {
+ useEffect(() => {
+    const canonicalUrl = "https://www.wishmakergaming.com/about";
+
+    const pageTitle =
+      "About WishMakerGaming | Independent Game Reviews";
+
+    const description =
+      "Learn about WishMakerGaming, an independent gaming review site focused on honest opinions, clear scoring, and useful recommendations for players.";
+
+    document.title = pageTitle;
+
+    setMetaTag("description", description);
+    setCanonical(canonicalUrl);
+
+    setPropertyMetaTag("og:title", pageTitle);
+    setPropertyMetaTag("og:description", description);
+    setPropertyMetaTag("og:url", canonicalUrl);
+    setPropertyMetaTag("og:type", "website");
+
+    setMetaTag("twitter:card", "summary_large_image");
+    setMetaTag("twitter:title", pageTitle);
+    setMetaTag("twitter:description", description);
+  }, []);
+
   return (
     <>
       <Header />
