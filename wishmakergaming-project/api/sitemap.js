@@ -19,7 +19,7 @@ function escapeXml(value = "") {
 export default async function handler(req, res) {
   try {
     const { data: reviews, error } = await supabase
-      .from("reviews")
+      .from("posts")
       .select("slug, published_at, updated_at")
       .eq("status", "published")
       .not("slug", "is", null)
